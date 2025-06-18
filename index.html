@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 20th Birthday, Chahat! 💕</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .page {
+            display: none;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .birthday-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff69b4; }
+            to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff69b4; }
+        }
+        
+        .message {
+            font-size: 1.2rem;
+            color: #fff;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .cake-container {
+            position: relative;
+            margin: 30px 0 50px 0;
+            animation: bounceIn 1s ease-out 0.5s both;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .cake {
+            width: 320px;
+            height: 180px;
+            background: linear-gradient(to bottom, #D2691E 0%, #8B4513 100%);
+            border-radius: 0 0 15px 15px;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.15);
+        }
+        
+        .cake-top {
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            right: 10px;
+            height: 40px;
+            background: linear-gradient(to bottom, #FFFACD 0%, #F0E68C 50%, #DDA0DD 100%);
+            border-radius: 20px;
+            border: 3px solid #FFB6C1;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 2px 6px rgba(255,255,255,0.4);
+        }
+        
+        .cake-top::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 20px;
+            right: 20px;
+            height: 8px;
+            background: linear-gradient(90deg, #FF69B4, #FFB6C1, #DDA0DD, #FFB6C1, #FF69B4);
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .cake-top::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 30px;
+            right: 30px;
+            height: 6px;
+            background: linear-gradient(90deg, #DDA0DD, #FFB6C1, #FF69B4, #FFB6C1, #DDA0DD);
+            border-radius: 3px;
+        }
+        
+        .cake-layer {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            right: 20px;
+            height: 50px;
+            background: linear-gradient(to bottom, #8B4513 0%, #654321 100%);
+            border-radius: 8px;
+            box-shadow: inset 0 3px 6px rgba(0,0,0,0.3), inset 0 -2px 4px rgba(255,255,255,0.1);
+        }
+        
+        .cake-layer::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 5px;
+            right: 5px;
+            height: 12px;
+            background: linear-gradient(to bottom, #F5DEB3 0%, #D2B48C 100%);
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .cake-base {
+            position: absolute;
+            bottom: 20px;
+            left: 15px;
+            right: 15px;
+            height: 60px;
+            background: linear-gradient(to bottom, #8B4513 0%, #5D4037 100%);
+            border-radius: 10px;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.4), inset 0 -2px 4px rgba(255,255,255,0.1);
+        }
+        
+        .cake-base::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 8px;
+            right: 8px;
+            height: 10px;
+            background: linear-gradient(to bottom, #DEB887 0%, #CD853F 100%);
+            border-radius: 5px;
+        }
+        
+        .candles {
+            position: absolute;
+            top: -55px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 280px;
+        }
+        
+        .candle {
+            width: 10px;
+            height: 35px;
+            background: linear-gradient(to bottom, #FFD700 0%, #FFA500 50%, #FF6347 100%);
+            border-radius: 5px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 1px solid #DAA520;
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.3);
+        }
+        
+        .candle:hover {
+            transform: scale(1.1);
+        }
+        
+        .flame {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 15px;
+            background: radial-gradient(circle, #ffa500 0%, #ff4500 70%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: flicker 1s ease-in-out infinite alternate;
+        }
+        
+        .flame.blown {
+            animation: blowOut 0.5s ease-out forwards;
+        }
+        
+        @keyframes flicker {
+            0% { transform: translateX(-50%) rotate(-2deg) scale(1); }
+            100% { transform: translateX(-50%) rotate(2deg) scale(1.1); }
+        }
+        
+        @keyframes blowOut {
+            0% { opacity: 1; transform: translateX(-50%) scale(1); }
+            100% { opacity: 0; transform: translateX(-50%) scale(0); }
+        }
+        
+        .instruction {
+            margin-top: 60px;
+            font-size: 1.1rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+        }
+        
+        .love-page {
+            max-width: 800px;
+        }
+        
+        .love-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            color: #fff;
+            margin-bottom: 30px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+        
+        .love-message {
+            font-size: 1.3rem;
+            color: #fff;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            animation: float-heart 3s linear infinite;
+        }
+        
+        @keyframes float-heart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .final-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: 2px solid #fff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            animation: rainbow 3s linear infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { border-color: #ff6b6b; }
+            16% { border-color: #ffa500; }
+            33% { border-color: #ffff00; }
+            50% { border-color: #00ff00; }
+            66% { border-color: #0000ff; }
+            83% { border-color: #8b00ff; }
+            100% { border-color: #ff6b6b; }
+        }
+        
+        @media (max-width: 768px) {
+            .birthday-title { font-size: 2.5rem; }
+            .love-title { font-size: 3rem; }
+            .message { font-size: 1rem; }
+            .cake { width: 250px; height: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="container">
+        <!-- Birthday Page -->
+        <div class="page active" id="birthday-page">
+            <h1 class="birthday-title">Happy 20th Birthday, Chahat! 🎉</h1>
+            <div class="message">
+                <p>Even though we're not in the same place right now, Chahat, I swear it doesn't matter. I still feel close to you like annoyingly in love close. Every single day you make me smile, laugh, and feel stupidly lucky to have you in my life. You're honestly my favourite part of every day. And today? Today's all about you. Your cuteness, your drama, your laugh, your everything. If I was there I'd be dragging you out to celebrate and pretending I'm not simping hard the whole time.</p>
+                <p>I wish I could be there in person to do something special give you a big hug, annoy you until you smile, and maybe force feed you cake but since I can't, I made this little thing for you. It's not a diamond or some giant teddy bear yet, but it's made with love. And yes I know that's cheesy but so am I, deal with it.</p>
+            </div>
+            
+            <div class="cake-container">
+                <div class="cake">
+                    <div class="cake-top"></div>
+                    <div class="cake-layer"></div>
+                    <div class="cake-base"></div>
+                    <div class="candles" id="candles">
+                        <!-- Candles will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="instruction">
+                BLOW THEM UP
+            </div>
+            
+            <button class="btn" id="next-btn" style="display: none;" onclick="showLovePage()">
+                AAO BAHU AAB INSE MILO JII
+            </button>
+        </div>
+        
+        <!-- Love Page -->
+        <div class="page" id="love-page">
+            <div class="love-page">
+                <h1 class="love-title">I Love You</h1>
+                <div class="love-message">
+                    <p>Also I'm gonna keep saying this until you start charging me a subscription that I LOVE YOU. And it's not some chill background music love it's full volume earphones in screaming the lyrics kind of love. Especially when you do that laugh where you're just gone, or when you VC me in the evening and I finally feel normal again. I'm telling you no VC equals bad day. That's just how it works now.</p>
+                    
+                    <p>Every day with you feels like a celebration, Chahat. You could be ranting about literally anything, and I'd still sit there like yep keep talking this is the best thing I've ever heard. And when you get all soft and cute with me? Yeah that's when I officially lose all my brain cells and just start smiling like an idiot.</p>
+                    
+                    <p>Distance sucks but you don't and you're everything. You're the reason I keep checking my phone, the reason I smile at random moments, and the reason this long distance thing feels a little less hard. I love you fully, stupidly and unapologetically.</p>
+                    
+                    <p>Happy Birthday, my love. I hope we could do more calls, have more laughter, and make more fun of me for being dumb, and a future where I get to annoy you in person forever.</p>
+                </div>
+                
+                <button class="final-btn" onclick="restartCelebration()">
+                    you can always press me!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create twinkling stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = (Math.random() * 3 + 1) + 'px';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Create floating hearts
+        function createHeart() {
+            const heartsContainer = document.getElementById('hearts');
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            heartsContainer.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        
+        // Create candles
+        function createCandles() {
+            const candlesContainer = document.getElementById('candles');
+            for (let i = 0; i < 20; i++) {
+                const candle = document.createElement('div');
+                candle.className = 'candle';
+                
+                const flame = document.createElement('div');
+                flame.className = 'flame';
+                candle.appendChild(flame);
+                
+                candle.addEventListener('click', function() {
+                    if (!flame.classList.contains('blown')) {
+                        flame.classList.add('blown');
+                        checkAllCandlesBlown();
+                    }
+                });
+                
+                candlesContainer.appendChild(candle);
+            }
+        }
+        
+        // Check if all candles are blown out
+        function checkAllCandlesBlown() {
+            const flames = document.querySelectorAll('.flame');
+            const blownFlames = document.querySelectorAll('.flame.blown');
+            
+            if (flames.length === blownFlames.length) {
+                setTimeout(() => {
+                    document.getElementById('next-btn').style.display = 'inline-block';
+                    document.querySelector('.instruction').innerHTML = 'Congratulations! All wishes made!<br>Now click below for your special message...';
+                }, 1000);
+            }
+        }
+        
+        // Show love page
+        function showLovePage() {
+            document.getElementById('birthday-page').classList.remove('active');
+            document.getElementById('love-page').classList.add('active');
+            
+            // Start heart animation
+            setInterval(createHeart, 300);
+        }
+        
+        // Restart celebration
+        function restartCelebration() {
+            // Reset candles
+            const flames = document.querySelectorAll('.flame');
+            flames.forEach(flame => flame.classList.remove('blown'));
+            
+            document.getElementById('next-btn').style.display = 'none';
+            document.querySelector('.instruction').innerHTML = 'Click on each candle to blow it out and make a wish!';
+            
+            // Go back to birthday page
+            document.getElementById('love-page').classList.remove('active');
+            document.getElementById('birthday-page').classList.add('active');
+            
+            // Clear hearts
+            document.getElementById('hearts').innerHTML = '';
+        }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            createCandles();
+        });
+    </script>
+</body>
+</html>
